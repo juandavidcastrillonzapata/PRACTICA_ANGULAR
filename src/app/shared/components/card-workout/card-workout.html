@@ -1,57 +1,56 @@
-<!-- Workout Card 1 -->
-<div class="bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
-    <div class="p-6">
-        <div class="flex items-start justify-between mb-4">
-            <div>
-                <h3 class="text-lg font-semibold text-gray-900">
-                    Upper Body Strength
-                </h3>
-                <p class="text-sm text-gray-500">Strength Training</p>
-            </div>
-            <div class="relative">
-                <button class="p-1 text-gray-400 hover:text-gray-600" onclick="toggleDropdown(this)">
-                    <i data-lucide="more-vertical" class="h-4 w-4"></i>
-                </button>
-                <div
-                    class="dropdown-menu absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg border border-gray-200 hidden z-10">
-                    <a href="edit-workout.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                        <i data-lucide="edit" class="inline h-4 w-4 mr-2"></i>Edit
-                    </a>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50">
-                        <i data-lucide="copy" class="inline h-4 w-4 mr-2"></i>Duplicate
-                    </a>
-                    <a href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">
-                        <i data-lucide="trash-2" class="inline h-4 w-4 mr-2"></i>Delete
-                    </a>
-                </div>
-            </div>
+<div class="workout-card" 
+    (mouseenter)="onMouseEnter()" 
+    (mouseleave)="onMouseLeave()"
+    [ngClass]="{'hover-effect': isHovered}"> 
+    
+    <div class="card-header">
+        <div class="title-section">
+            <h1 class="title">{{ title }}</h1>
+            <p class="subtitle">{{ subtitle }}</p>
         </div>
-
-        <div class="space-y-3 mb-4">
-            <div class="flex items-center text-sm text-gray-600">
-                <i data-lucide="clock" class="h-4 w-4 mr-2"></i>
-                <span>45-60 minutes</span>
-            </div>
-            <div class="flex items-center text-sm text-gray-600">
-                <i data-lucide="activity" class="h-4 w-4 mr-2"></i>
-                <span>6 exercises</span>
-            </div>
-            <div class="flex items-center text-sm text-gray-600">
-                <i data-lucide="calendar" class="h-4 w-4 mr-2"></i>
-                <span>Last performed: Today</span>
-            </div>
-        </div>
-
-        <div class="flex space-x-2">
-            <button
-                class="flex-1 px-3 py-2 bg-primary-600 text-white rounded-md hover:bg-primary-700 text-sm font-medium">
-                Start Workout
+        
+        <div class="menu-container">
+            <button class="menu-button" 
+                    (click)="toggleMenu()"
+                    aria-label="Opciones del entrenamiento">
+                <i class="fas fa-ellipsis-v"></i>
             </button>
-            <button class="px-3 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 text-sm">
-                <i data-lucide="calendar-plus" class="h-4 w-4"></i>
-            </button>
+
+            <div class="dropdown-menu" [ngClass]="{'show': isMenuOpen}">
+                <a href="javascript:void(0)" class="menu-item" (click)="editWorkout()">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+                <a href="javascript:void(0)" class="menu-item" (click)="duplicateWorkout()">
+                    <i class="fas fa-copy"></i> Duplicate
+                </a>
+                <a href="javascript:void(0)" class="menu-item delete" (click)="deleteWorkout()">
+                    <i class="fas fa-trash-alt"></i> Delete
+                </a>
+            </div>
         </div>
     </div>
-</div>
 
-    
+    <div class="details-section">
+        <div class="detail-item">
+            <i class="far fa-clock"></i>
+            <span>{{ duration }}</span>
+        </div>
+        <div class="detail-item">
+            <i class="fas fa-chart-line"></i> 
+            <span>{{ exercises }} exercises</span>
+        </div>
+        <div class="detail-item">
+            <i class="far fa-calendar-alt"></i>
+            <span>Last performed: {{ lastPerformed }}</span>
+        </div>
+    </div>
+
+    <div class="actions-section">
+        <button class="start-button">Start Workout</button>
+        
+        <button class="calendar-button"
+                aria-label="Añadir al calendario">
+            <i class="far fa-calendar-plus"></i>
+        </button>
+    </div>
+</div>

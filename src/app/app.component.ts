@@ -1,20 +1,14 @@
-import { Component, AfterViewInit, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CardWorkout } from './shared/components/card-workout/card-workout';
-
-declare const lucide: any;
+import { CardWorkoutComponent } from './shared/components/card-workout/card-workout'; 
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, CardWorkout],
+  standalone: true, 
+  imports: [RouterOutlet, CardWorkoutComponent, CommonModule], 
   templateUrl: './app.component.html',
-  styleUrls: ['./app.css'],
+  styleUrls: ['./app.component.css']
 })
-
-export class AppComponent implements AfterViewInit {
-    title = "workout-tracker-app";
-    ngAfterViewInit(): void {
-        lucide.createIcons();
-    }
+export class AppComponent {
 }

@@ -1,94 +1,166 @@
+:root {
+    --primary-color: #007bff; 
+    --text-color: #333;
+    --secondary-text-color: #6c757d;
+    --delete-color: #dc3545; 
+    --border-color: #e9ecef;
+    --card-background: #ffffff;
+}
+
 .workout-card {
-    width: 100%;
-    max-width: 400px;
-    background-color: white;
+    background-color: var(--card-background);
+    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    margin: 20px auto;
-    }
-
-.workout-header {
-    padding: 20px;
-    border-bottom: 1px solid #eaeaea;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin: 10px 0; 
+    width: 100%;
+    box-sizing: border-box; 
+    font-family: sans-serif;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; 
 }
 
-.workout-title {
-    font-size: 24px;
+.workout-card.hover-effect {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); 
+    transform: translateY(-5px); 
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    position: relative; 
+}
+
+.title {
+    font-size: 1.4rem;
     font-weight: 700;
-    color: #333;
-    margin-bottom: 5px;
+    color: var(--text-color);
+    margin: 0;
 }
 
-.workout-subtitle {
-    font-size: 16px;
-    color: #666;
+.subtitle {
+    font-size: 0.9rem;
+    color: var(--secondary-text-color);
+    margin: 5px 0 0 0;
 }
 
-.workout-details {
-    padding: 20px;
-    border-bottom: 1px solid #eaeaea;
+.menu-container {
+    position: relative;
+}
+
+.menu-button {
+    background: none;
+    border: 1px solid var(--border-color); 
+    color: var(--secondary-text-color);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 6px; 
+    transition: background-color 0.2s;
+    line-height: 1; 
+}
+.menu-button:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 45px; 
+    right: 0;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    width: 150px;
+    padding: 5px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+}
+
+.dropdown-menu.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.menu-item i {
+    margin-right: 10px;
+    width: 18px; 
+    font-size: 1rem;
+}
+
+.menu-item:hover {
+    background-color: #f7f7f7;
+}
+
+.menu-item.delete {
+    color: var(--delete-color); 
+}
+
+.details-section {
+    padding-top: 10px;
 }
 
 .detail-item {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 15px;
 }
 
-.detail-label {
-    color: #888;
-    font-size: 14px;
+.detail-item i {
+    font-size: 1.2rem;
+    width: 25px; 
+    margin-right: 10px;
+    color: var(--secondary-text-color);
 }
 
-.detail-value {
-    color: #333;
-    font-weight: 500;
-}
-
-.workout-actions {
-    padding: 20px;
+.actions-section {
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
 }
 
-.action-btn {
-    background: none;
-    border: none;
-    color: #007bff;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: background-color 0.2s;
-}
-
-.action-btn:hover {
-    background-color: #f0f8ff;
-}
-
-.workout-footer {
-    padding: 0 20px 20px;
-}
-
-.start-workout-btn {
-    background-color: #007bff;
+.start-button {
+    flex-grow: 1;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 8px;
     padding: 14px 20px;
-    font-size: 16px;
+    font-size: 1.05rem;
     font-weight: 600;
-    width: 100%;
     cursor: pointer;
     transition: background-color 0.2s;
 }
 
-.start-workout-btn:hover {
-    background-color: #0069d9;
+.start-button:hover {
+    background-color: #0056b3;
 }
 
-.last-performed {
-    color: #28a745;
-    font-weight: 500;
+.calendar-button {
+    background-color: white;
+    border: 1px solid var(--primary-color); 
+    color: var(--primary-color);
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.calendar-button:hover {
+    background-color: #f0f0ff;
 }
